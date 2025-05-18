@@ -37,9 +37,10 @@ namespace NZWalks.API.Controllers
         }
         // GET Walk
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery, 
+            [FromQuery] string? SortBy, [FromQuery] bool? IsAscending, [FromQuery] int PageNumber = 1, [FromQuery] int pageSize = 1000)
         {
-            var walksDominModel = await walkRepository.GetAllAsync();
+            var walksDominModel = await walkRepository.GetAllAsync(filterOn, filterQuery, SortBy, IsAscending?? true, PageNumber, pageSize);
 
             //map domin model to dto
             return Ok(mapper.Map<List<WalkDTO>>(walksDominModel));
@@ -88,5 +89,5 @@ namespace NZWalks.API.Controllers
             return Ok(mapper.Map<WalkDTO>(DeletedWalkDomin));
         }
 
-    }
+    }   
 }
