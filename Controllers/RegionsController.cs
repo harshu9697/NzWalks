@@ -1,5 +1,6 @@
 ﻿//using AutoMapper;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace NZWalks.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class RegionsController : ControllerBase
     {
         private readonly NzWalksDbContext dbContext;
@@ -28,6 +30,7 @@ namespace NZWalks.API.Controllers
             this.mapper = mapper;
         }
         [HttpGet]
+        [Authorize(Roles ="Reader")]
         public async Task<IActionResult> GetAll()
         {
             var RegionsDomin = await regionRepository.GetAllAsync();
@@ -49,6 +52,7 @@ namespace NZWalks.API.Controllers
 
         [HttpGet]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             var regionDomin = await regionRepository.GetByIdAsync(id);
@@ -72,6 +76,7 @@ namespace NZWalks.API.Controllers
         // Post to create new region
         [HttpPost]
         [ValidateModel]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Create([FromBody] AddRegionRequestDTO addRegionRequestDTO)
         {
             //if (ModelState.IsValid)
@@ -110,6 +115,7 @@ namespace NZWalks.API.Controllers
         //update region
         [HttpPut]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> update([FromRoute] Guid id, [FromBody] UpdateRegionRequestDTO updateRegionRequestDTO)
         {
             var RegionDominModel = mapper.Map<Region>(updateRegionRequestDTO);
@@ -142,6 +148,7 @@ namespace NZWalks.API.Controllers
         // Delete Region
         [HttpDelete]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             var RegionDominModel = await regionRepository.DeleteAsync(id);
