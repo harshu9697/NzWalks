@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using NZWalks.API.Models.Domin_Model;
 using NZWalks.API.Models.DTO;
 using NZWalks.API.Repository;
+using System.Linq.Expressions;
+using System.Net;
 
 namespace NZWalks.API.Controllers
 {
@@ -40,11 +42,15 @@ namespace NZWalks.API.Controllers
         public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery, 
             [FromQuery] string? SortBy, [FromQuery] bool? IsAscending, [FromQuery] int PageNumber = 1, [FromQuery] int pageSize = 1000)
         {
-            var walksDominModel = await walkRepository.GetAllAsync(filterOn, filterQuery, SortBy, IsAscending?? true, PageNumber, pageSize);
+           
+                var walksDominModel = await walkRepository.GetAllAsync(filterOn, filterQuery, SortBy, IsAscending ?? true, PageNumber, pageSize);
 
-            //map domin model to dto
-            return Ok(mapper.Map<List<WalkDTO>>(walksDominModel));
-        }
+                //map domin model to dto
+                return Ok(mapper.Map<List<WalkDTO>>(walksDominModel));
+            }
+
+
+
 
         // GET Walk by ID
         [HttpGet("{id:Guid}")]

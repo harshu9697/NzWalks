@@ -1,0 +1,18 @@
+2025-05-20 11:55:11.139 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/swagger/index.html - null null
+2025-05-20 11:55:11.200 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/swagger/index.html - 200 null text/html;charset=utf-8 62.2482ms
+2025-05-20 11:55:11.274 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/_vs/browserLink - null null
+2025-05-20 11:55:11.274 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-20 11:55:11.312 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 38.1896ms
+2025-05-20 11:55:11.347 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/_vs/browserLink - 200 null text/javascript; charset=UTF-8 73.3585ms
+2025-05-20 11:55:11.924 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/swagger/v1/swagger.json - null null
+2025-05-20 11:55:11.957 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 33.1355ms
+2025-05-20 11:55:19.671 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/api/Regions - null null
+2025-05-20 11:55:19.678 +05:30 [INF] Executing endpoint 'NZWalks.API.Controllers.RegionsController.GetAll (NZWalks.API)'
+2025-05-20 11:55:19.688 +05:30 [INF] Route matched with {action = "GetAll", controller = "Regions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller NZWalks.API.Controllers.RegionsController (NZWalks.API).
+2025-05-20 11:55:22.194 +05:30 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[Code], [r].[Name], [r].[RegionImageURL]
+FROM [Regions] AS [r]
+2025-05-20 11:55:22.377 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[NZWalks.API.Models.DTO.RegionDTO, NZWalks.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-20 11:55:22.398 +05:30 [INF] Executed action NZWalks.API.Controllers.RegionsController.GetAll (NZWalks.API) in 2706.5584ms
+2025-05-20 11:55:22.402 +05:30 [INF] Executed endpoint 'NZWalks.API.Controllers.RegionsController.GetAll (NZWalks.API)'
+2025-05-20 11:55:22.415 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/api/Regions - 200 null application/json; charset=utf-8 2744.7902ms

@@ -11,6 +11,7 @@ using NZWalks.API.Models.DTO;
 using NZWalks.API.Repository;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
+using System.Text.Json;
 
 namespace NZWalks.API.Controllers
 {
@@ -22,19 +23,39 @@ namespace NZWalks.API.Controllers
         private readonly NzWalksDbContext dbContext;
         private readonly IRegionRepository regionRepository;
         private readonly IMapper mapper;
+        private readonly ILogger<RegionsController> logger;
 
-        public RegionsController(NzWalksDbContext dbContext, IRegionRepository regionRepository, IMapper mapper)
+        public RegionsController(NzWalksDbContext dbContext,
+            IRegionRepository regionRepository, IMapper mapper, ILogger<RegionsController> logger)
         {
             this.dbContext = dbContext;
             this.regionRepository = regionRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
         [HttpGet]
-        [Authorize(Roles ="Reader")]
+        //[Authorize(Roles ="Reader")]
         public async Task<IActionResult> GetAll()
         {
-            var RegionsDomin = await regionRepository.GetAllAsync();
+            //try
+            ////{
+            //    throw new Exception("this is a custom execption");
+            //    logger.LogInformation("GetAll Region Action Method was Invoked");
 
+                var RegionsDomin = await regionRepository.GetAllAsync();
+
+                //logger.LogInformation($"FInished GetAllRegions Request With Data : {JsonSerializer.Serialize(RegionsDomin)}");
+
+                var regiondto = mapper.Map<List<RegionDTO>>(RegionsDomin);
+
+                return Ok(regiondto);
+            }
+            //catch (Exception ex) 
+            //{
+            //    logger.LogError(ex, ex.Message);
+            //    throw;
+            //}
+           
             //var RegionsDto = new List<RegionDTO>();
             //foreach (var RegionDomin in RegionsDomin) {
             //    RegionsDto.Add(new RegionDTO()
@@ -45,10 +66,9 @@ namespace NZWalks.API.Controllers
             //        RegionImageURL = RegionDomin.RegionImageURL,
             //    });
             //}
-            var regiondto = mapper.Map<List<RegionDTO>>(RegionsDomin);
+                
+        //}
 
-            return Ok(regiondto);    
-        }
 
         [HttpGet]
         [Route("{id:Guid}")]
