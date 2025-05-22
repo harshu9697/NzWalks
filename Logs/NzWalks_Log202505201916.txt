@@ -1,0 +1,22 @@
+2025-05-20 19:16:14.312 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/swagger/index.html - null null
+2025-05-20 19:16:14.350 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/swagger/index.html - 200 null text/html;charset=utf-8 38.1894ms
+2025-05-20 19:16:14.423 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/_vs/browserLink - null null
+2025-05-20 19:16:14.423 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-20 19:16:14.441 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 18.0576ms
+2025-05-20 19:16:14.462 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/_vs/browserLink - 200 null text/javascript; charset=UTF-8 39.1889ms
+2025-05-20 19:16:14.599 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/swagger/v1/swagger.json - null null
+2025-05-20 19:16:14.621 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.4833ms
+2025-05-20 19:16:50.656 +05:30 [INF] User profile is available. Using 'C:\Users\harsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-20 19:16:51.137 +05:30 [INF] Now listening on: https://localhost:7182
+2025-05-20 19:16:51.140 +05:30 [INF] Now listening on: http://localhost:5190
+2025-05-20 19:16:51.309 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-20 19:16:51.312 +05:30 [INF] Hosting environment: Development
+2025-05-20 19:16:51.313 +05:30 [INF] Content root path: F:\Projects\NZWalks\NZWalks\NZWalks.API
+2025-05-20 19:16:52.070 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/swagger/index.html - null null
+2025-05-20 19:16:52.424 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/swagger/index.html - 200 null text/html;charset=utf-8 372.2614ms
+2025-05-20 19:16:52.563 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-20 19:16:52.584 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 20.9825ms
+2025-05-20 19:16:52.630 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/_vs/browserLink - null null
+2025-05-20 19:16:52.695 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/_vs/browserLink - 200 null text/javascript; charset=UTF-8 64.6809ms
+2025-05-20 19:16:52.901 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/swagger/v1/swagger.json - null null
+2025-05-20 19:16:52.941 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 44.8092ms

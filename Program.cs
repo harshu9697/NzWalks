@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using NZWalks.API.Repositories;
 using Microsoft.Extensions.FileProviders;
 using Serilog;
+using NZWalks.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -121,6 +122,8 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.UseStaticFiles(new StaticFileOptions
 {

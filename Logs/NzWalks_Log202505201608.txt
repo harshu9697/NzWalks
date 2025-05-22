@@ -1,0 +1,38 @@
+2025-05-20 16:08:36.885 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/swagger/index.html - null null
+2025-05-20 16:08:36.919 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/swagger/index.html - 200 null text/html;charset=utf-8 34.6902ms
+2025-05-20 16:08:36.978 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/_vs/browserLink - null null
+2025-05-20 16:08:36.986 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-20 16:08:36.994 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 7.9103ms
+2025-05-20 16:08:37.013 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/_vs/browserLink - 200 null text/javascript; charset=UTF-8 36.021ms
+2025-05-20 16:08:37.153 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/swagger/v1/swagger.json - null null
+2025-05-20 16:08:37.169 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 17.2139ms
+2025-05-20 16:08:51.379 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7182/api/Walks?PageNumber=1&pageSize=1000 - null null
+2025-05-20 16:08:51.391 +05:30 [INF] Executing endpoint 'NZWalks.API.Controllers.WalksController.GetAll (NZWalks.API)'
+2025-05-20 16:08:51.400 +05:30 [INF] Route matched with {action = "GetAll", controller = "Walks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller NZWalks.API.Controllers.WalksController (NZWalks.API).
+2025-05-20 16:08:51.447 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [w0].[Id], [w0].[Description], [w0].[DifficultyId], [w0].[LengthInKm], [w0].[Name], [w0].[RegionId], [w0].[WalkImageUrl], [d].[Id], [d].[Name], [r].[Id], [r].[Code], [r].[Name], [r].[RegionImageURL]
+FROM (
+    SELECT [w].[Id], [w].[Description], [w].[DifficultyId], [w].[LengthInKm], [w].[Name], [w].[RegionId], [w].[WalkImageUrl]
+    FROM [Walks] AS [w]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [w0]
+INNER JOIN [Difficulties] AS [d] ON [w0].[DifficultyId] = [d].[Id]
+INNER JOIN [Regions] AS [r] ON [w0].[RegionId] = [r].[Id]
+2025-05-20 16:08:51.549 +05:30 [INF] Executed action NZWalks.API.Controllers.WalksController.GetAll (NZWalks.API) in 144.785ms
+2025-05-20 16:08:51.553 +05:30 [INF] Executed endpoint 'NZWalks.API.Controllers.WalksController.GetAll (NZWalks.API)'
+2025-05-20 16:08:51.602 +05:30 [ERR] e87262ba-b50e-4f85-a08b-51ccaf005d57 : This is a new Exception
+System.Exception: This is a new Exception
+   at NZWalks.API.Controllers.WalksController.GetAll(String filterOn, String filterQuery, String SortBy, Nullable`1 IsAscending, Int32 PageNumber, Int32 pageSize)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at NZWalks.API.Middlewares.ExceptionHandlerMiddleware.InvokeAsync(HttpContext httpContext)
+2025-05-20 16:08:51.613 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7182/api/Walks?PageNumber=1&pageSize=1000 - 500 null application/json; charset=utf-8 234.0547ms
